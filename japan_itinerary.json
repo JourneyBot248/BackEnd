@@ -1,0 +1,121 @@
+{
+  "destination": "Japan",
+  "trip_duration": 5,
+  "itinerary": [
+    {
+      "day": 1,
+      "schedule": [
+        {
+          "location_name": "Tsukiji Market (Tokyo)",
+          "description": "Explore the famous fish market and enjoy fresh seafood dishes.",
+          "longitude": 139.77047316085657,
+          "latitude": 35.6653884
+        },
+        {
+          "location_name": "Asakusa Shrine",
+          "description": "Visit one of the most significant Shinto shrines in Tokyo, known for its traditional architecture and cultural significance.",
+          "longitude": 139.7974962226383,
+          "latitude": 35.71482575
+        },
+        {
+          "location_name": "Senso-ji Temple",
+          "description": "Immerse yourself in the ancient Buddhist temple with its grand gates and beautiful architecture.",
+          "longitude": 139.79552649573398,
+          "latitude": 35.713403150000005
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "schedule": [
+        {
+          "location_name": "Akihabara, Tokyo",
+          "description": "Visit electronics stores and enjoy the anime/manga culture hub in the city.",
+          "longitude": 139.7743684,
+          "latitude": 35.7018928
+        },
+        {
+          "location_name": "Tsukiji Market",
+          "description": "Explore the famous fish market and try fresh seafood dishes.",
+          "longitude": 139.77047316085657,
+          "latitude": 35.6653884
+        },
+        {
+          "location_name": "Meguro River",
+          "description": "Enjoy a peaceful walk along the river, taking in the cherry blossom trees (if visiting during spring).",
+          "longitude": 139.7124914,
+          "latitude": 35.6320179
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "schedule": [
+        {
+          "location_name": "Tokyo Skytree",
+          "description": "Visit one of the tallest towers in Japan for stunning city views.",
+          "longitude": 139.81071409992649,
+          "latitude": 35.71005425
+        },
+        {
+          "location_name": "Sens\u014d-d\u014d",
+          "description": "Explore a traditional Japanese temple and learn about Buddhist culture.",
+          "longitude": 7.274706,
+          "latitude": 43.6975703
+        },
+        {
+          "location_name": "Tokyo National Museum",
+          "description": "Discover Japanese art, crafts, and artifacts at one of the largest museums in Japan.",
+          "longitude": 139.77596758202066,
+          "latitude": 35.719044800000006
+        }
+      ]
+    },
+    {
+      "day": 4,
+      "schedule": [
+        {
+          "location_name": "Kinkaku-ji (Golden Pavilion)",
+          "description": "Admire the beautiful architecture and gardens of this Zen Buddhist temple.",
+          "longitude": 135.72953725309281,
+          "latitude": 35.03952925
+        },
+        {
+          "location_name": "Kyoto Imperial Palace",
+          "description": "Explore the history and architecture of the former imperial residence.",
+          "longitude": 135.76234445381894,
+          "latitude": 35.02526345
+        },
+        {
+          "location_name": "Fushimi Inari Shrine",
+          "description": "Wander through thousands of vermillion torii gates in this iconic Japanese shrine.",
+          "longitude": 135.7737731,
+          "latitude": 34.9672545
+        }
+      ]
+    },
+    {
+      "day": 5,
+      "schedule": [
+        {
+          "location_name": "Nikko",
+          "description": "Visit the historic and scenic town known for its beautiful shrines and temples.",
+          "longitude": 139.698139,
+          "latitude": 36.7197576
+        },
+        {
+          "location_name": "Himeji Castle",
+          "description": "Explore one of Japan's most well-preserved castles, a UNESCO World Heritage Site.",
+          "longitude": 134.69402000000002,
+          "latitude": 34.839331349999995
+        },
+        {
+          "location_name": "Hiroshima Peace Memorial Museum",
+          "description": "Visit this museum to learn about the history and impact of the atomic bombing during World War II.",
+          "longitude": 132.4521047834089,
+          "latitude": 34.391812099999996
+        }
+      ]
+    }
+  ]
+}
