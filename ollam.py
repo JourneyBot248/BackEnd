@@ -26,6 +26,35 @@ class Itinerary(BaseModel):
     trip_duration: int
     itinerary: List[Day] 
 
+class Chatbot:
+    def __init__(self, model_name="technobyte/c4ai-command-r7b-12-2024:Q5_K_M"):
+        self.model_name = model_name
+        self.history = []
+
+    def add_message(self, role, content):
+        self.history.append({"role": role, "content": content})
+
+    def chat(self, user_message):
+        self.add_message("user", user_message)
+        try:
+            response = ollama.chat(
+                model=self.model_name,
+                messages=self.history,
+                options={"temperature": 0.7}
+            )
+            response_message = response['message']['content']
+            self.add_message("assistant", response_message)
+            return response_message
+        except Exception as e:
+            raise RuntimeError(f"Error in chatbot interaction: {e}")
+
+# Example of how to use it
+# chatbot = Chatbot()
+
+# display welcome message
+# user_input = take in input from frontend
+# response = chatbot.chat(user_input)
+
 def geocode_location(location_name):
     """Uses the Geoapify API to retrieve latitude and longitude for a given location name."""
     url = f"https://api.geoapify.com/v1/geocode/search?text={location_name}&apiKey={os.getenv('GEOAPIFY_API_KEY')}"
