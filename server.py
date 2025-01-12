@@ -10,7 +10,7 @@ from ollam import (
 
 app = FastAPI()
 
-PORT = 8000
+PORT = 8001
 
 class ItineraryRequest(BaseModel):
     destination: str

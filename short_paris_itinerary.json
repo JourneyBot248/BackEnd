@@ -1,0 +1,28 @@
+{
+  "destination": "Paris",
+  "trip_duration": 2,
+  "itinerary": [
+    {
+      "day": 1,
+      "schedule": [
+        {
+          "location_name": "Eiffel Tower",
+          "description": "Explore the vast collection of art and artifacts at the Louvre Museum, including the iconic Mona Lisa painting.",
+          "longitude": null,
+          "latitude": null
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "schedule": [
+        {
+          "location_name": "Louvre Museum",
+          "description": "Explore the vast collection of art and artifacts at the Louvre Museum, including the iconic Mona Lisa painting.",
+          "longitude": null,
+          "latitude": null
+        }
+      ]
+    }
+  ]
+}
