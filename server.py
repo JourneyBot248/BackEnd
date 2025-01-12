@@ -27,7 +27,7 @@ async def generate_itinerary(request: ItineraryRequest):
     Generate an itinerary based on the provided destination, duration, and interests.
     """
     try:
-        itinerary = process_reddit_and_generate_itinerary(
+        itinerary = await process_reddit_and_generate_itinerary(
             destination=request.destination,
             duration=request.duration,
             interests=request.interests,
@@ -37,7 +37,7 @@ async def generate_itinerary(request: ItineraryRequest):
         raise HTTPException(status_code=500, detail=f"Error generating itinerary: {str(e)}")
 
 @app.post("/save-itinerary/")
-async def save_itinerary(request: SaveRequest):
+def save_itinerary(request: SaveRequest):
     """
     Save the provided itinerary to a file with the given filename.
     """

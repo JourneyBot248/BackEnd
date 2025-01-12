@@ -197,7 +197,6 @@ def generate_itinerary(destination, duration, interests, additional_info):
 
 def save_itinerary_to_file(itinerary, filename):
     try:
-        # Convert the itinerary to a dictionary
         itinerary_dict = itinerary.dict() if isinstance(itinerary, BaseModel) else itinerary
         with open(filename, 'w') as file:
             json.dump(itinerary_dict, file, indent=2)
@@ -208,6 +207,7 @@ def save_itinerary_to_file(itinerary, filename):
 
 async def process_reddit_and_generate_itinerary(destination, duration, interests):
     reddit = RedditSummarizer()
+    await reddit.initialize()
     reddit_additional_info = await reddit.process_search_and_summarize(
         location=destination,
         interests=interests
