@@ -26,6 +26,11 @@ class Itinerary(BaseModel):
     trip_duration: int
     itinerary: List[Day] 
 
+class TripDetails(BaseModel):
+    destination: str
+    duration: int
+    interests: List[str]
+
 class Chatbot:
     def __init__(self, model_name="technobyte/c4ai-command-r7b-12-2024:Q5_K_M"):
         self.model_name = model_name
@@ -48,12 +53,41 @@ class Chatbot:
         except Exception as e:
             raise RuntimeError(f"Error in chatbot interaction: {e}")
 
-# Example of how to use it
-# chatbot = Chatbot()
+    def extract_trip_details(self):
+        """Extracts the destination, duration, and interests from the chat history."""
+        prompt = """
+        Based on the following conversation, identify and return the trip details:
+        - Destination (a place or city)
+        - Duration (in days, integer value)
+        - Interests (a list of topics or categories of interest, e.g. ['food', 'history', 'technology'])
+        
+        The conversation:
+        {conversation}
 
-# display welcome message
-# user_input = take in input from frontend
-# response = chatbot.chat(user_input)
+        Provide the trip details in the following JSON format:
+        {
+            "destination": "<destination>",
+            "duration": <duration>,
+            "interests": ["<interest1>", "<interest2>", ...]
+        }
+        """
+
+        conversation_text = "\n".join([msg["content"] for msg in self.history])
+        formatted_prompt = prompt.format(conversation=conversation_text)
+        
+        try:
+            response = ollama.chat(
+                model=self.model_name,
+                messages=[{"role": "user", "content": formatted_prompt}],
+                options={"temperature": 0.7}
+            )
+            response_message = response['message']['content']
+            
+            trip_details = TripDetails.parse_raw(response_message)
+            return trip_details
+        except Exception as e:
+            raise RuntimeError(f"Error extracting trip details: {e}")
+      
 
 def geocode_location(location_name):
     """Uses the Geoapify API to retrieve latitude and longitude for a given location name."""
@@ -215,7 +249,7 @@ def generate_itinerary(destination, duration, interests, additional_info):
         
         for day in itinerary.itinerary:
             for activity in day.schedule:
-                coords = geocode_location(activity.location_name)
+                coords = geocode_location(activity.location_name + " " + destination)
                 activity.longitude = coords["longitude"]
                 activity.latitude = coords["latitude"]
         
@@ -242,31 +276,6 @@ async def process_reddit_and_generate_itinerary(destination, duration, interests
         interests=interests
     )
     return generate_itinerary(destination, duration, interests, reddit_additional_info)
-
-
-# example usecase
-# def main():
-#     case = {
-#         "destination": "Japan",
-#         "duration": 5,
-#         "interests": ["technology", "history", "food"]
-#     }
-    
-#     start_time = time.time()
-#     itinerary = process_reddit_and_generate_itinerary(
-#         destination=case["destination"],
-#         duration=case["duration"],
-#         interests=case["interests"]
-#     )
-    
-#     itinerary_time = time.time() - start_time
-#     print(f"Itinerary generation completed in {itinerary_time:.2f} seconds.")
-    
-#     filename = f"{case['destination'].replace(' ', '_').lower()}_itinerary.json"
-#     save_itinerary_to_file(itinerary, filename)
-
-# if __name__ == "__main__":
-#     main()
 
 
 """
